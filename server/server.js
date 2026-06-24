@@ -74,9 +74,11 @@ res.status(500).send("TTS Error");
 
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-console.log(`TTS Server running on port ${PORT}`);
-});
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`TTS Server running on port ${PORT}`);
+  });
+}
 
 export default app;
